@@ -1,66 +1,130 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# E-commerce API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About
 
-## About Laravel
+This project is an E-commerce API built using the Laravel framework. It provides a robust and scalable architecture for managing products, brands, categories, locations, and orders. The API supports CRUD operations and user authentication using JWT.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Architecture
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The project follows the MVC (Model-View-Controller) architectural pattern, which separates the application logic into three main components:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Models**: Represent the data and business logic of the application. They are located in the `app/Models` directory.
+- **Controllers**: Handle the user input and interact with models to render the appropriate responses. They are located in the `app/Http/Controllers` directory.
+- **Routes**: Define the endpoints for the API and map them to the appropriate controller actions. They are located in the `routes/api.php` file.
 
-## Learning Laravel
+## Technologies
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+The project uses the following technologies:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Laravel**: A PHP framework for building web applications.
+- **PHP**: The programming language used for server-side scripting.
+- **MySQL**: The database management system used for storing application data.
+- **JWT (JSON Web Tokens)**: Used for authentication and authorization.
+- **Composer**: A dependency manager for PHP.
+- **NPM**: A package manager for JavaScript.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Features
 
-## Laravel Sponsors
+- **User Authentication**: Users can register, log in, and log out using JWT for secure authentication.
+- **Product Management**: CRUD operations for products, including image upload and pagination.
+- **Brand Management**: CRUD operations for brands.
+- **Category Management**: CRUD operations for categories, including image upload.
+- **Location Management**: CRUD operations for user locations.
+- **Order Management**: CRUD operations for orders, including order status updates and product quantity management.
+- **Validation**: Input validation is performed using Laravel's built-in validation features.
+- **Error Handling**: Custom error messages for better user experience.
+- **Pagination**: Pagination support for listing products and orders.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Installation
 
-### Premium Partners
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/your-username/your-repo.git
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. Navigate to the project directory:
+    ```sh
+    cd your-repo
+    ```
+
+3. Install the dependencies:
+    ```sh
+    composer install
+    npm install
+    ```
+
+4. Copy the [.env.example](http://_vscodecontentref_/0) file to `.env` and update the environment variables:
+    ```sh
+    cp .env.example .env
+    ```
+
+5. Generate the application key:
+    ```sh
+    php artisan key:generate
+    ```
+
+6. Run the database migrations:
+    ```sh
+    php artisan migrate
+    ```
+
+7. Start the development server:
+    ```sh
+    php artisan serve
+    ```
+
+## Usage
+
+### Authentication
+
+- **Register**: Send a POST request to `/api/register` with `name`, `email`, and `password` fields.
+- **Login**: Send a POST request to `/api/login` with `email` and `password` fields.
+- **Get User Info**: Send a GET request to `/api/user` with the JWT token in the Authorization header.
+- **Logout**: Send a POST request to `/api/logout` with the JWT token in the Authorization header.
+
+### Products
+
+- **List Products**: Send a GET request to `/api/products`.
+- **Get Product**: Send a GET request to `/api/products/{id}`.
+- **Create Product**: Send a POST request to `/api/products` with product details.
+- **Update Product**: Send a PUT request to `/api/products/{id}` with updated product details.
+- **Delete Product**: Send a DELETE request to `/api/products/{id}`.
+
+### Brands
+
+- **List Brands**: Send a GET request to `/api/brands`.
+- **Get Brand**: Send a GET request to `/api/brands/{id}`.
+- **Create Brand**: Send a POST request to `/api/brands` with brand details.
+- **Update Brand**: Send a PUT request to `/api/brands/{id}` with updated brand details.
+- **Delete Brand**: Send a DELETE request to `/api/brands/{id}`.
+
+### Categories
+
+- **List Categories**: Send a GET request to `/api/categories`.
+- **Get Category**: Send a GET request to `/api/categories/{id}`.
+- **Create Category**: Send a POST request to `/api/categories` with category details.
+- **Update Category**: Send a PUT request to `/api/categories/{id}` with updated category details.
+- **Delete Category**: Send a DELETE request to `/api/categories/{id}`.
+
+### Locations
+
+- **List Locations**: Send a GET request to `/api/locations`.
+- **Create Location**: Send a POST request to `/api/locations` with location details.
+- **Update Location**: Send a PUT request to `/api/locations/{id}` with updated location details.
+- **Delete Location**: Send a DELETE request to `/api/locations/{id}`.
+
+### Orders
+
+- **List Orders**: Send a GET request to `/api/orders`.
+- **Get Order**: Send a GET request to `/api/orders/{id}`.
+- **Create Order**: Send a POST request to `/api/orders` with order details.
+- **Update Order Status**: Send a PUT request to `/api/orders/{id}/status` with updated status.
+- **Get User Orders**: Send a GET request to `/api/users/{id}/orders`.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Thank you for considering contributing to the project! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
